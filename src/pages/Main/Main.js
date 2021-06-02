@@ -42,19 +42,18 @@ export const Main = () => {
         >
           {gifs.map((gif, i) => {
             return (
-              <li key={i}>
-                <img
-                  src={gif.images.fixed_width.url}
-                  alt={gif.title}
-                  onClick={() => {
-                    setGifInfo({
-                      title: gif.title,
-                      image: gif.images.fixed_width.url,
-                      giphy: gif.url,
-                    });
-                    setShowModal(true);
-                  }}
-                />
+              <li
+                key={i}
+                onClick={() => {
+                  setGifInfo({
+                    title: gif.title,
+                    image: gif.images.fixed_width.url,
+                    giphy: gif.url,
+                  });
+                  setShowModal(true);
+                }}
+              >
+                <img src={gif.images.fixed_width.url} alt={gif.title} />
                 <span>Ver detalhes</span>
               </li>
             );

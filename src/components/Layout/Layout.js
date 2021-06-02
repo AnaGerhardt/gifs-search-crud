@@ -13,7 +13,7 @@ export const Layout = ({ children }) => {
   const debouncedFunc = debounce(async function (search) {
     if (search) {
       const req = await searchGifs(search);
-      if (req?.data?.data.length > 0) {
+      if (req?.data?.data?.length > 0) {
         setGifs(req.data.data);
       }
     }

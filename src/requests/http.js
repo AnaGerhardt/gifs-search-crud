@@ -1,6 +1,7 @@
 import axios from "axios";
 import { loading, loaded } from "../redux/loading.slice";
 import store from "../redux/store";
+import { toast } from "react-toastify";
 
 const DEBUG = process.env.NODE_ENV === "development";
 
@@ -11,6 +12,20 @@ const mainAxiosConfig = {
 const instances = {
   main: axios.create(mainAxiosConfig),
 };
+
+function catcher(error) {
+  if (
+    error.response &&
+    error.response.data &&
+    error.response.data.errorMessage &&
+    error.response.data.code
+  ) {
+    toast["error"](error.response.data.errorMessage);
+  } else {
+    toast["error"]("Ocorreu algum erro, aguarde e tente novamente!");
+  }
+  return error;
+}
 
 async function requestInterceptor(config) {
   if (DEBUG) {
@@ -55,7 +70,7 @@ async function request(method, url, params) {
     });
     return response;
   } catch (e) {
-    console.log(e);
+    catcher(e);
   } finally {
     store.dispatch(loaded(url));
   }
