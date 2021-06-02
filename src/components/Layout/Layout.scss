@@ -1,0 +1,74 @@
+@import "src/assets/css/base";
+
+.header {
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+  gap: 2rem;
+  box-shadow: 0px -2px 15px 2px $main-color;
+  padding: 0.5rem 5rem;
+
+  img {
+    height: 100%;
+    width: 7.5rem;
+    cursor: pointer;
+  }
+
+  &-search {
+    width: 50%;
+    margin: 0 auto;
+    input {
+      width: 100%;
+      border-radius: 1.5rem;
+      height: 3rem;
+      border: none;
+      font-size: 1.3rem;
+      padding-left: 1.5rem;
+    }
+  }
+
+  &-saved {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: $font-color;
+    text-decoration: none;
+    font-weight: 400;
+
+    &:hover {
+      color: $main-color;
+    }
+
+    span {
+      font-size: 0.85rem;
+    }
+    svg {
+      height: 100%;
+      width: 2.3rem;
+    }
+  }
+}
+
+@media screen and (max-width: $notebook) {
+  .header {
+    &-search {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .header {
+    padding: 1.2rem 2rem;
+    img {
+      display: none;
+    }
+
+    &-search {
+      width: 100%;
+    }
+  }
+}

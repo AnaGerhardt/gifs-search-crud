@@ -1,0 +1,11 @@
+@import "../../assets/css/base";
+
+.spinner {
+  //animation: rotate 2s linear infinite;
+  z-index: 2;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  transform-origin: center;
+  color: $font-color;
+}
