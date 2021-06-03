@@ -9,7 +9,7 @@ const gifSlice = createSlice({
     saveGif: (state, action) => {
       state.push({
         title: action.payload.title,
-        image: action.payload.title,
+        image: action.payload.image,
       });
     },
     editGif: (state, action) => {
@@ -21,9 +21,7 @@ const gifSlice = createSlice({
       });
     },
     deleteGif: (state, action) => {
-      state.filter((item) => {
-        return item.title !== action.payload.title;
-      });
+      return state.filter((item) => item.title !== action.payload.title);
     },
   },
 });

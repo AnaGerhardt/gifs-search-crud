@@ -1,11 +1,11 @@
-import { Modal } from "../";
+import { Modal } from "..";
 import { addGif } from "../../requests/addGif";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import store from "../../redux/store";
 import { saveGif } from "../../redux/gifs.slice";
 
-export const GifDetails = ({ title, image, giphy, ...modalProps }) => {
+export const ModalAddGif = ({ title, image, giphy, ...modalProps }) => {
   const gifs = useSelector((state) => state.gifs);
 
   async function savingGif() {
@@ -16,6 +16,7 @@ export const GifDetails = ({ title, image, giphy, ...modalProps }) => {
         if (req) {
           store.dispatch(saveGif({ title, image }));
           toast["success"]("Gif adicionado à sua lista!");
+          modalProps.modalClosed();
         }
       } catch (e) {
         console.log(e);
@@ -29,13 +30,16 @@ export const GifDetails = ({ title, image, giphy, ...modalProps }) => {
     <Modal {...modalProps}>
       <div className="modal-wrapper">
         <div className="modal-wrapper-body">
-          <strong>Título</strong> <br />
-          <big>{title}</big> <br />
-          <br />
-          <strong>Link do Giphy</strong> <br />
-          <a href={giphy} target="_blank" rel="noreferrer">
-            Clique aqui para visitar
-          </a>
+          <div>
+            <strong>Título</strong>
+            <big>{title}</big>
+          </div>
+          <div>
+            <strong>Link do Giphy</strong>
+            <a href={giphy} target="_blank" rel="noreferrer">
+              Clique aqui para visitar
+            </a>
+          </div>
         </div>
         <div className="modal-wrapper-button">
           <button

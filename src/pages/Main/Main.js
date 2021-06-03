@@ -2,7 +2,7 @@ import { useGifs } from "../../context/GifsContext";
 import Masonry from "react-masonry-component";
 import useLoading from "../../hooks/loadingHook";
 import { searchGifs } from "../../requests/searchGifs";
-import { Spinner, GifDetails } from "../../components";
+import { Spinner, ModalAddGif } from "../../components";
 import MayTheForce from "../../assets/images/maytheforce.gif";
 import { useState } from "react";
 
@@ -65,7 +65,7 @@ export const Main = () => {
           <img src={MayTheForce} alt="May the force be with you" />
         </div>
       )}
-      <GifDetails
+      <ModalAddGif
         title={gifInfo.title}
         image={gifInfo.image}
         giphy={gifInfo.giphy}

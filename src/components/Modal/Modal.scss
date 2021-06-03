@@ -21,23 +21,42 @@
     padding: 2rem;
     min-width: 23rem;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 
     &-title {
-      opacity: 0.9;
-      font-size: 1rem;
-      padding-bottom: 1rem;
+      font-weight: 600;
+      font-size: 1.2rem;
       margin-bottom: 1.5rem;
+    }
+
+    &-body,
+    &-body div {
+      display: flex;
+      flex-direction: column;
     }
 
     &-body {
       font-weight: 200;
       margin-bottom: 2rem;
+      gap: 1.5rem;
+
+      div {
+        gap: 0.5rem;
+      }
+
+      input {
+        width: 100%;
+        border-radius: 1rem;
+        height: 2rem;
+        font-size: 1rem;
+        padding-left: 1rem;
+      }
     }
 
     &-button,
     &-buttons {
       display: flex;
-      margin-top: 2.5rem;
       align-items: center;
     }
 

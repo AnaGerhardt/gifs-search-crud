@@ -1,0 +1,45 @@
+@import "src/assets/css/base";
+
+.saved-gifs {
+  padding: 2rem 0;
+  text-align: center;
+
+  h2 {
+    margin-bottom: 2rem;
+    margin-top: 0;
+  }
+
+  &-masonry {
+    margin: 0 auto;
+    li {
+      margin-bottom: 1rem;
+      &:hover {
+        div {
+          visibility: visible;
+        }
+      }
+    }
+    img {
+      border-radius: 0.5rem;
+    }
+  }
+  &-actions {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    visibility: hidden;
+    position: absolute;
+    bottom: 0.25rem;
+    height: 2.5rem;
+    background: rgba(0, 0, 0, 0.8);
+    width: 100%;
+
+    span {
+      cursor: pointer;
+      &:hover {
+        color: $main-color;
+      }
+    }
+  }
+}

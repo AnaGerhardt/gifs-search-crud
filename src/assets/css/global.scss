@@ -31,6 +31,7 @@ a {
 
 input {
   outline: none;
+  border: none;
   &::placeholder {
     opacity: 0.6;
   }
@@ -46,6 +47,7 @@ button {
   font-size: 1rem;
   padding: 0.6rem 1.8rem;
   font-weight: 600;
+  min-width: 8rem;
   &-main {
     background: $main-color;
     border: none;

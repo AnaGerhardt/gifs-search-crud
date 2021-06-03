@@ -1,6 +1,6 @@
 .gifs-list {
   text-align: center;
-  padding-top: 2rem;
+  padding: 2rem 0;
 
   &-intro {
     display: flex;
@@ -20,6 +20,9 @@
 
     li {
       margin-bottom: 1rem;
+      img {
+        border-radius: 0.5rem;
+      }
       &:hover {
         img {
           opacity: 0.3;
@@ -44,9 +47,5 @@
         transform: translate(-50%, -50%);
       }
     }
-  }
-
-  img {
-    border-radius: 0.5rem;
   }
 }
