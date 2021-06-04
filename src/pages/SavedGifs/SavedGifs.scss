@@ -3,6 +3,8 @@
 .saved-gifs {
   padding: 2rem 0;
   text-align: center;
+  display: flex;
+  flex-direction: column;
 
   h2 {
     margin-bottom: 2rem;
