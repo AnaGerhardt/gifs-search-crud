@@ -3,6 +3,10 @@
   padding: 2rem 0;
   margin-bottom: 1rem;
 
+  span {
+    cursor: pointer;
+  }
+
   &-intro {
     display: flex;
     flex-direction: column;
@@ -38,7 +42,6 @@
         z-index: 0;
       }
       span {
-        cursor: pointer;
         visibility: hidden;
         position: absolute;
         z-index: 100;

@@ -43,15 +43,6 @@ export const Main = () => {
     gutter: 20,
   };
 
-  useEffect(() => {
-    window.addEventListener("scroll", function (e) {
-      const listElm = e.target.scrollingElement;
-      if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
-        loadMore();
-      }
-    });
-  });
-
   return (
     <div className="gifs-list">
       {!layout && !loading && gifs.length > 0 && <Spinner />}
@@ -96,6 +87,9 @@ export const Main = () => {
         </div>
       )}
       {loadingMore && <Spinner />}
+      {offset > 0 && !loadingMore && gifs.length > 0 && layout && !loading && (
+        <span onClick={() => loadMore()}>Carregar mais</span>
+      )}
       <ModalAddGif
         title={gifInfo.title}
         image={gifInfo.image}

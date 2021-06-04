@@ -4,6 +4,7 @@ export const searchGifs = async (search, offset, loadMore) => {
   const params = {
     api_key: process.env.REACT_APP_GIPHY_KEY,
     q: search,
+    limit: 20,
     offset: offset ? offset : 0,
   };
   const req = http.get(searchGifs.url, params, loadMore);
