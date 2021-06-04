@@ -3,7 +3,7 @@ import useLoading from "../../hooks/loadingHook";
 import { searchGifs } from "../../requests/searchGifs";
 import { Spinner, ModalAddGif } from "../../components";
 import MayTheForce from "../../assets/images/maytheforce.gif";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import { loadGifs } from "../../redux/gifs.slice";
 import store from "../../redux/store";
