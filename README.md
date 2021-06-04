@@ -1,6 +1,6 @@
 # Projeto de busca de gifs "Aliança Rebelde"
 
-Website criado como desafio de front-end para a empresa Med 365.
+Website criado como desafio de front-end para a empresa Med365.
 
 ## Scripts disponíveis
 
