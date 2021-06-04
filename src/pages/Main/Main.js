@@ -13,13 +13,11 @@ import "./Main.scss";
 export const Main = () => {
   const loading = useLoading(searchGifs);
   const loadingMore = useLoading("loadingMore");
-  const [layout, setLayout] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [gifInfo, setGifInfo] = useState({});
   const gifs = useSelector((state) => state.gifs);
   const search = localStorage.getItem("search");
-
-  let offset = 20;
+  let [offset, setOffset] = useState(20);
 
   async function loadMore() {
     if (offset > 0) {
@@ -28,9 +26,9 @@ export const Main = () => {
       if (result.length > 0) {
         result.forEach((res) => store.dispatch(loadGifs(res)));
         if (req.data.pagination.count < 20) {
-          offset = 0;
+          setOffset(0);
         } else {
-          offset += 20;
+          setOffset((offset += 20));
         }
       }
     }
@@ -45,21 +43,16 @@ export const Main = () => {
 
   return (
     <div className="gifs-list">
-      {!layout && !loading && gifs.length > 0 && <Spinner />}
       {loading ? (
         <Spinner />
       ) : gifs.length > 0 ? (
         <Masonry
-          className={"gifs-list-masonry hide"}
+          className={"gifs-list-masonry"}
           id="gifsList"
           elementType={"ul"}
           options={masonryOptions}
           disableImagesLoaded={false}
-          updateOnEachImageLoad={false}
-          onLayoutComplete={() => {
-            setLayout(true);
-            document.querySelector("#gifsList").classList.remove("hide");
-          }}
+          updateOnEachImageLoad={true}
         >
           {gifs.map((gif, i) => {
             return (
@@ -87,7 +80,7 @@ export const Main = () => {
         </div>
       )}
       {loadingMore && <Spinner />}
-      {offset > 0 && !loadingMore && gifs.length > 0 && layout && !loading && (
+      {offset > 0 && !loadingMore && gifs.length > 0 && !loading && (
         <span onClick={() => loadMore()}>Carregar mais</span>
       )}
       <ModalAddGif

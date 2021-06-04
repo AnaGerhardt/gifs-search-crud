@@ -1,12 +1,11 @@
 import Masonry from "react-masonry-component";
 import { useSelector } from "react-redux";
 import { useState } from "react";
-import { Spinner, ModalDeleteGif, ModalEditGif } from "../../components";
+import { ModalDeleteGif, ModalEditGif } from "../../components";
 import "./SavedGifs.scss";
 
 export const SavedGifs = () => {
   const gifs = useSelector((state) => state.savedGifs);
-  const [layout, setLayout] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
   const [gifInfo, setGifInfo] = useState({});
@@ -19,19 +18,14 @@ export const SavedGifs = () => {
   return (
     <div className="saved-gifs">
       <h2>Lista de gifs salvos</h2>
-      {!layout && gifs.length > 0 && <Spinner />}
       {gifs.length > 0 ? (
         <Masonry
-          className={"saved-gifs-masonry hide"}
+          className={"saved-gifs-masonry"}
           id="savedGifsList"
           elementType={"ul"}
           options={masonryOptions}
           disableImagesLoaded={false}
-          updateOnEachImageLoad={false}
-          onLayoutComplete={() => {
-            setLayout(true);
-            document.getElementById("savedGifsList").classList.remove("hide");
-          }}
+          updateOnEachImageLoad={true}
         >
           {gifs.map((gif, i) => {
             return (
