@@ -60,9 +60,9 @@ async function responseError(error) {
 instances.main.interceptors.request.use(requestInterceptor, requestError);
 instances.main.interceptors.response.use(responseInterceptor, responseError);
 
-async function request(method, url, params) {
+async function request(method, url, params, loadMore) {
   const axiosInstance = instances["main"];
-  store.dispatch(loading(url));
+  loadMore ? store.dispatch(loading(loadMore)) : store.dispatch(loading(url));
   try {
     const response = await axiosInstance(url, {
       method,
@@ -72,12 +72,12 @@ async function request(method, url, params) {
   } catch (e) {
     catcher(e);
   } finally {
-    store.dispatch(loaded(url));
+    loadMore ? store.dispatch(loaded(loadMore)) : store.dispatch(loaded(url));
   }
 }
 
 const methods = {
-  get: async (url, obj) => request("GET", url, { ...obj }),
+  get: async (url, obj, loadMore) => request("GET", url, { ...obj }, loadMore),
 };
 
 export default methods;

@@ -1,6 +1,6 @@
 import { Switch, Route } from "react-router-dom";
-import { Main } from "./pages/Main/Main";
-import { Layout, SavedGifs } from "./components";
+import { Main, SavedGifs } from "./pages";
+import { Layout } from "./components";
 
 const Routes = () => {
   return (

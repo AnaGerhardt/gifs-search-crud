@@ -1,19 +1,40 @@
-import { useGifs } from "../../context/GifsContext";
 import Masonry from "react-masonry-component";
 import useLoading from "../../hooks/loadingHook";
 import { searchGifs } from "../../requests/searchGifs";
 import { Spinner, ModalAddGif } from "../../components";
 import MayTheForce from "../../assets/images/maytheforce.gif";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { loadGifs } from "../../redux/gifs.slice";
+import store from "../../redux/store";
 
 import "./Main.scss";
 
 export const Main = () => {
-  const gifs = useGifs();
   const loading = useLoading(searchGifs);
+  const loadingMore = useLoading("loadingMore");
   const [layout, setLayout] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [gifInfo, setGifInfo] = useState({});
+  const gifs = useSelector((state) => state.gifs);
+  const search = localStorage.getItem("search");
+
+  let offset = 20;
+
+  async function loadMore() {
+    if (offset > 0) {
+      const req = await searchGifs(search, offset, "loadingMore");
+      const result = req.data.data;
+      if (result.length > 0) {
+        result.forEach((res) => store.dispatch(loadGifs(res)));
+        if (req.data.pagination.count < 20) {
+          offset = 0;
+        } else {
+          offset += 20;
+        }
+      }
+    }
+  }
 
   const masonryOptions = {
     transitionDuration: 0,
@@ -22,12 +43,21 @@ export const Main = () => {
     gutter: 20,
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", function (e) {
+      const listElm = e.target.scrollingElement;
+      if (listElm.scrollTop + listElm.clientHeight >= listElm.scrollHeight) {
+        loadMore();
+      }
+    });
+  });
+
   return (
     <div className="gifs-list">
-      {!layout && !loading && gifs && <Spinner />}
+      {!layout && !loading && gifs.length > 0 && <Spinner />}
       {loading ? (
         <Spinner />
-      ) : gifs ? (
+      ) : gifs.length > 0 ? (
         <Masonry
           className={"gifs-list-masonry hide"}
           id="gifsList"
@@ -37,7 +67,7 @@ export const Main = () => {
           updateOnEachImageLoad={false}
           onLayoutComplete={() => {
             setLayout(true);
-            document.getElementById("gifsList").classList.remove("hide");
+            document.querySelector("#gifsList").classList.remove("hide");
           }}
         >
           {gifs.map((gif, i) => {
@@ -65,6 +95,7 @@ export const Main = () => {
           <img src={MayTheForce} alt="May the force be with you" />
         </div>
       )}
+      {loadingMore && <Spinner />}
       <ModalAddGif
         title={gifInfo.title}
         image={gifInfo.image}

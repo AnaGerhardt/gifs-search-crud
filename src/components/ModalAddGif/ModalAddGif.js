@@ -3,10 +3,10 @@ import { addGif } from "../../requests/addGif";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import store from "../../redux/store";
-import { saveGif } from "../../redux/gifs.slice";
+import { saveGif } from "../../redux/savedGifs.slice";
 
 export const ModalAddGif = ({ title, image, giphy, ...modalProps }) => {
-  const gifs = useSelector((state) => state.gifs);
+  const gifs = useSelector((state) => state.savedGifs);
 
   async function savingGif() {
     const checkRepeated = gifs.some((gif) => gif.title === title);
@@ -19,7 +19,7 @@ export const ModalAddGif = ({ title, image, giphy, ...modalProps }) => {
           modalProps.modalClosed();
         }
       } catch (e) {
-        console.log(e);
+        toast["error"](e);
       }
     } else {
       toast["warning"]("Sua lista já contém esse gif!");

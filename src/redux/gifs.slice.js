@@ -2,29 +2,18 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = [];
 
-const gifSlice = createSlice({
+const gifsSlice = createSlice({
   initialState,
   name: "gifs",
   reducers: {
-    saveGif: (state, action) => {
-      state.push({
-        title: action.payload.title,
-        image: action.payload.image,
-      });
+    setGifs: (state, action) => {
+      return action.payload;
     },
-    editGif: (state, action) => {
-      state.map((item) => {
-        if (item.title === action.payload.title) {
-          item.title = action.payload.newTitle;
-        }
-        return item;
-      });
-    },
-    deleteGif: (state, action) => {
-      return state.filter((item) => item.title !== action.payload.title);
+    loadGifs: (state, action) => {
+      state.push(action.payload);
     },
   },
 });
 
-export const { saveGif, editGif, deleteGif } = gifSlice.actions;
-export default gifSlice.reducer;
+export const { setGifs, loadGifs } = gifsSlice.actions;
+export default gifsSlice.reducer;

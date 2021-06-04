@@ -2,7 +2,7 @@ import { Modal } from "..";
 import { modifyGif } from "../../requests/modifyGif";
 import { toast } from "react-toastify";
 import store from "../../redux/store";
-import { editGif } from "../../redux/gifs.slice";
+import { editGif } from "../../redux/savedGifs.slice";
 import { useState } from "react";
 
 export const ModalEditGif = ({ title, ...modalProps }) => {
@@ -17,7 +17,7 @@ export const ModalEditGif = ({ title, ...modalProps }) => {
         modalProps.modalClosed();
       }
     } catch (e) {
-      console.log(e);
+      toast["error"](e);
     }
   }
 

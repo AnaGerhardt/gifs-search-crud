@@ -7,7 +7,7 @@ import rootReducer from "./rootReducer";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["loading"],
+  blacklist: ["loading, gifs"],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

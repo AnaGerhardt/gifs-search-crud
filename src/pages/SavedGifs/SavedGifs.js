@@ -5,7 +5,7 @@ import { Spinner, ModalDeleteGif, ModalEditGif } from "../../components";
 import "./SavedGifs.scss";
 
 export const SavedGifs = () => {
-  const gifs = useSelector((state) => state.gifs);
+  const gifs = useSelector((state) => state.savedGifs);
   const [layout, setLayout] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [showModalDelete, setShowModalDelete] = useState(false);
@@ -19,8 +19,8 @@ export const SavedGifs = () => {
   return (
     <div className="saved-gifs">
       <h2>Lista de gifs salvos</h2>
-      {!layout && gifs && <Spinner />}
-      {gifs ? (
+      {!layout && gifs.length > 0 && <Spinner />}
+      {gifs.length > 0 ? (
         <Masonry
           className={"saved-gifs-masonry hide"}
           id="savedGifsList"

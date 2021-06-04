@@ -2,7 +2,7 @@ import { Modal } from "..";
 import { removeGif } from "../../requests/removeGif";
 import { toast } from "react-toastify";
 import store from "../../redux/store";
-import { deleteGif } from "../../redux/gifs.slice";
+import { deleteGif } from "../../redux/savedGifs.slice";
 
 export const ModalDeleteGif = ({ title, ...modalProps }) => {
   async function deletingGif() {
@@ -14,7 +14,7 @@ export const ModalDeleteGif = ({ title, ...modalProps }) => {
         modalProps.modalClosed();
       }
     } catch (e) {
-      console.log(e);
+      toast["error"](e);
     }
   }
 

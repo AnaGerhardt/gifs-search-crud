@@ -43,6 +43,7 @@ export const Modal = ({ show, children, modalClosed }) => {
   const Modal = (
     <div
       ref={modal}
+      data-testid="modal"
       className={`modal ${show ? "modal_opened" : "modal_closed"}`}
     >
       {children}
