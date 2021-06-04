@@ -29,7 +29,9 @@ export const Layout = ({ children }) => {
   }, 600);
 
   useEffect(() => {
-    store.dispatch(setGifs([]));
+    if (!!document.querySelector("#search").value === false) {
+      store.dispatch(setGifs([]));
+    }
   });
 
   return (

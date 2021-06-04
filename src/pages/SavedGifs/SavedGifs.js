@@ -2,6 +2,7 @@ import Masonry from "react-masonry-component";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { ModalDeleteGif, ModalEditGif } from "../../components";
+import { Link } from "react-router-dom";
 import "./SavedGifs.scss";
 
 export const SavedGifs = () => {
@@ -56,6 +57,11 @@ export const SavedGifs = () => {
       ) : (
         "Não há itens salvos ainda"
       )}
+      <Link to="/">
+        <button type="button" className="button button-main">
+          Voltar
+        </button>
+      </Link>
       <ModalDeleteGif
         title={gifInfo.title}
         show={showModalDelete}

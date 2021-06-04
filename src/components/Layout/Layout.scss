@@ -61,7 +61,8 @@
 
 @media screen and (max-width: $mobile) {
   .header {
-    padding: 1.2rem 2rem;
+    padding: 1.2rem 1rem;
+    gap: 1rem;
     img {
       display: none;
     }
