@@ -1,6 +1,6 @@
 # Gifs search project
 
-Website created to search gifs, using the Giphy API. You can add gifs to your favourites list, edit their name and delete them from the list.
+Website created to search gifs, using the Giphy API. You can also visualise their original title, add them to your favourites list, edit their title and delete them from your list.
 
 ## Available scripts
 
