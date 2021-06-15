@@ -1,16 +1,16 @@
-# Projeto de busca de gifs "Aliança Rebelde"
+# Gifs search project
 
-Website criado como desafio de front-end para a empresa Med365.
+Website created to search gifs, using the Giphy API. You can add gifs to your favourites list, edit their name and delete them from the list.
 
-## Scripts disponíveis
+## Available scripts
 
-No diretório do projeto, executar:
+In the project directory, run:
 
 ### `npm start`
 
-Roda o app em modo desenvolvimento.\
-Abra [http://localhost:3000](http://localhost:3000) para visualizar no browser.
+Runs the app in development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ### `npm test`
-Para rodar todos os testes, basta executar npm test, e logo depois, pressionar "a".
-Para rodar algum teste individual, execute dessa forma: npm test -- "nomeDoComponente", por ex. npm test -- Layout.
+To run all the tests, run npm test, and then, press the letter "a".
+To run a specific test, run: npm test -- "componentName", ex. npm test -- Layout.
